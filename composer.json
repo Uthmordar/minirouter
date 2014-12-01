@@ -1,0 +1,22 @@
+{
+    "name": "minirouter/minirouter",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tanguy",
+            "email": "tanguyrygodin@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4.0",
+        "symfony/yaml": "~3.0@dev"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    }
+}
