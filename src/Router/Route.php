@@ -94,7 +94,7 @@ class Route implements iRoutable{
      * @return boolean
      */
     public function getParams($matches){
-        if(empty($matches)){
+        if(!$matches || empty($matches)){
             return false;
         }
         if(!empty($this->params)){
@@ -103,6 +103,8 @@ class Route implements iRoutable{
                 $params[trim($v)]=$matches[$v];
             }
             return $params;
+        }else{
+            throw new \RuntimeException('No params');
         }
     }
     /**
