@@ -28,6 +28,18 @@ class RouteTest extends \PHPUnit_Framework_TestCase{
         $this->assertEquals(count($this->routeyml), count($this->router));
     }
     
+    public function testAddSameRoute(){
+        $array=[
+            'pattern' => '\/[a-zA-Z0-9\-_]+\/(?P<id>[1-9][0-9]*)',
+            'connect' => 'Controllers\BlogController:show'
+        ];
+        $obj = new Route($array);
+        $this->router->addRoute($obj);
+        $this->setExpectedException('RuntimeException', 'Route already exist');
+        $obj = new Route($array);
+        $this->router->addRoute($obj);
+    }
+    
     public function testGetController(){
         foreach($this->routeyml as $route){
             $this->router->addRoute(new Route($route));

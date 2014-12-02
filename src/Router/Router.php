@@ -8,8 +8,10 @@ class Router  extends \SplObjectStorage{
      * @param \Interfaces\iRoutable $route
      */
     public function addRoute(iRoutable $route){
-        if($this->contains($route)){
-            throw new RuntimeException('Route already exist');
+        foreach($this as $oldRoute){
+            if($route->getPattern() == $oldRoute->getPattern()){
+                throw new \RuntimeException('Route already exist');
+            }
         }
         $this->attach($route);
     }
